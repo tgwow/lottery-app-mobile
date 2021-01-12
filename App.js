@@ -1,15 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello, João!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { StyleSheet, StatusBar, ActivityIndicator } from 'react-native';
+import { Roboto_700Bold_Italic, useFonts } from '@expo-google-fonts/roboto';
+// import { Constants } from 'expo';
+import { NavigationContainer } from '@react-navigation/native';
+import RootStackScreen from './src/navigation';
+import { COLORS } from './src/styles/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,3 +15,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default function App() {
+  const [loaded] = useFonts({ Roboto_700Bold_Italic });
+  if (!loaded) return <ActivityIndicator size="large" color={COLORS.primary} />;
+  return (
+    <NavigationContainer style={styles.container}>
+      <StatusBar />
+      <RootStackScreen />
+    </NavigationContainer>
+  );
+}

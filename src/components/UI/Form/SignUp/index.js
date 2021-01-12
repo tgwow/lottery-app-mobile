@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
 });
 
 const signInValidation = {
+  name: Yup.string().required('This field is required.'),
   email: Yup.string()
     .email('Invalid email address.')
     .required('This field is required.'),
@@ -35,7 +36,7 @@ const signInValidation = {
     .required('This field is required.'),
 };
 
-const SignInForm = ({ navigation }) => {
+const SignUpForm = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => {
@@ -44,7 +45,7 @@ const SignInForm = ({ navigation }) => {
   return (
     <>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ name: '', email: '', password: '' }}
         validationSchema={Yup.object(signInValidation)}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
@@ -54,6 +55,13 @@ const SignInForm = ({ navigation }) => {
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (
           <Form>
+            <Input
+              onChangeText={handleChange('name')}
+              onBlur={handleBlur('name')}
+              value={values.name}
+              name="name"
+              placeholder="Name"
+            />
             <Input
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
@@ -80,40 +88,29 @@ const SignInForm = ({ navigation }) => {
                 color={COLORS.gray_light}
               />
             </View>
-            <Text
-              style={styles.customText}
-              onPress={() => {
-                navigation.push('RecoveryPassword', {
-                  title: 'Recovery Password',
-                });
-              }}
-            >
-              I forget my password
-            </Text>
             <Button
+              style={{ paddingVertical: 30 }}
               onPress={handleSubmit}
               Icon={Ionicons}
               iconName="arrow-forward"
             >
-              Log In
+              Sign Up
             </Button>
           </Form>
         )}
       </Formik>
       <Button
         onPress={() => {
-          navigation.push('SignUp', {
-            title: 'Sign Up',
-          });
+          navigation.pop();
         }}
         color={COLORS.secondary}
         Icon={Ionicons}
-        iconName="arrow-forward"
+        iconName="arrow-back"
+        isLeft
       >
-        Sign Up
+        Back
       </Button>
     </>
   );
 };
-
-export default SignInForm;
+export default SignUpForm;

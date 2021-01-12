@@ -1,21 +1,28 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../../../styles/colors';
+import Hero from '../../UI/Hero';
 
 const styles = StyleSheet.create({
-  footer: {
+  header: {
+    backgroundColor: COLORS.white,
     color: COLORS.secondary,
-    textAlign: 'center',
     fontSize: 14,
-    paddingBottom: 5,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
-const Footer = () => {
+const Header = () => {
   return (
-    <Text style={styles.footer}>
-      Copyright {new Date().getFullYear()} Luby Software
-    </Text>
+    <View style={styles.header}>
+      <Hero fontSize={36} size="small" />
+      <Ionicons name="log-out-outline" size={40} color={COLORS.gray_light} />
+    </View>
   );
 };
 
-export default Footer;
+export default Header;

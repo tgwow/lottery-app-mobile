@@ -1,17 +1,18 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import Text from '../../Text';
 import { COLORS } from '../../../../styles/colors';
 
 const styles = StyleSheet.create({
   text: {
     color: COLORS.secondary,
-    fontStyle: 'italic',
-    fontSize: 38,
+    fontSize: 28,
     fontWeight: '700',
+    textTransform: 'uppercase',
   },
 });
-const PrimaryHeading = ({ children }) => {
-  return <Text style={styles.text}>{children}</Text>;
+const SecondaryHeading = ({ children, style }) => {
+  return <Text style={[styles.text, style]}>{children}</Text>;
 };
 
-export default PrimaryHeading;
+export default SecondaryHeading;
