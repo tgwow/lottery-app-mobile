@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import { Alert, Text, View, StyleSheet } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
+
 import Input from '../Input';
 import Button from '../../Button';
 import Form from '../index';
+
 import { COLORS } from '../../../../styles/colors';
+import { AuthContext } from '../../../../contexts/auth';
+import Spinner from '../../Spinner';
 
 const styles = StyleSheet.create({
   customText: {
@@ -26,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const signInValidation = {
+const signUpValidation = {
   name: Yup.string().required('This field is required.'),
   email: Yup.string()
     .email('Invalid email address.')
@@ -38,6 +42,7 @@ const signInValidation = {
 
 const SignUpForm = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const { signUp, isLoading } = useContext(AuthContext);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -46,11 +51,10 @@ const SignUpForm = ({ navigation }) => {
     <>
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
-        validationSchema={Yup.object(signInValidation)}
+        validationSchema={Yup.object(signUpValidation)}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            Alert.alert(JSON.stringify(values));
-          }, 1000);
+          signUp(values);
+          setSubmitting(false);
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -91,10 +95,10 @@ const SignUpForm = ({ navigation }) => {
             <Button
               style={{ paddingVertical: 30 }}
               onPress={handleSubmit}
-              Icon={Ionicons}
+              Icon={isLoading ? false : Ionicons}
               iconName="arrow-forward"
             >
-              Sign Up
+              {isLoading ? <Spinner /> : 'Sign Up'}
             </Button>
           </Form>
         )}

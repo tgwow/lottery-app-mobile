@@ -1,13 +1,26 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { Text } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RecentGames from '../../containers/App/RecentGames';
 import NewBet from '../../containers/App/NewBet';
+import Drawer from '../../components/Drawer';
+import TabBar from '../../components/Layout/TabBar';
 
-const AppStack = createStackNavigator();
+const TabStack = createBottomTabNavigator();
 
 export default () => (
-  <AppStack.Navigator headerMode={false}>
-    <AppStack.Screen name="NewBet" component={NewBet} />
-    <AppStack.Screen name="RecentGames" component={RecentGames} />
-  </AppStack.Navigator>
+  <TabStack.Navigator
+    headerMode={false}
+    tabBar={(props) => <TabBar {...props} />}
+  >
+    <TabStack.Screen name="Home">
+      {() => <Drawer Screen={RecentGames} />}
+    </TabStack.Screen>
+    <TabStack.Screen name="NewBet" options={{ tabBarLabel: 'Bet' }}>
+      {() => <Drawer Screen={NewBet} />}
+    </TabStack.Screen>
+    <TabStack.Screen name="Profile">
+      {() => <Drawer Screesn={() => <Text>Nothing here yet!</Text>} />}
+    </TabStack.Screen>
+  </TabStack.Navigator>
 );

@@ -1,29 +1,30 @@
-import React from 'react';
-import { Alert } from 'react-native';
+import React, { useContext } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
 import Input from '../Input';
 import Button from '../../Button';
 import Form from '../index';
 import { COLORS } from '../../../../styles/colors';
+import { AuthContext } from '../../../../contexts/auth';
+import Spinner from '../../Spinner';
 
-const signInValidation = {
+const RecoveryValidation = {
   email: Yup.string()
     .email('Invalid email address.')
     .required('This field is required.'),
 };
 
-const SignInForm = ({ navigation }) => {
+const RecoveryPassword = ({ navigation }) => {
+  const { recoveryPassword, isLoading } = useContext(AuthContext);
   return (
     <>
       <Formik
-        initialValues={{ email: '', password: '' }}
-        validationSchema={Yup.object(signInValidation)}
+        initialValues={{ email: '' }}
+        validationSchema={Yup.object(RecoveryValidation)}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            Alert.alert(JSON.stringify(values));
-          }, 1000);
+          recoveryPassword(values, navigation);
+          setSubmitting(false);
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -38,10 +39,10 @@ const SignInForm = ({ navigation }) => {
             <Button
               style={{ paddingVertical: 35 }}
               onPress={handleSubmit}
-              Icon={Ionicons}
+              Icon={isLoading ? false : Ionicons}
               iconName="arrow-forward"
             >
-              Submit
+              {isLoading ? <Spinner /> : 'Submit'}
             </Button>
           </Form>
         )}
@@ -61,4 +62,4 @@ const SignInForm = ({ navigation }) => {
   );
 };
 
-export default SignInForm;
+export default RecoveryPassword;

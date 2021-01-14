@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TextInput, Text, StyleSheet, View } from 'react-native';
 import { useField } from 'formik';
+import { AuthContext } from '../../../../contexts/auth';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
 const Input = ({ ...props }) => {
   // eslint-disable-next-line react/destructuring-assignment
   const [field, meta] = useField(props);
+
   return (
     <View>
       <TextInput {...props} style={styles.wrapper} />

@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-const Separator = (props) => {
+const Separator = ({ style }) => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.separator} />
+    <View style={[styles.wrapper]}>
+      <View style={[styles.separator, style]} />
     </View>
   );
 };

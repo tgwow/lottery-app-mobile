@@ -27,13 +27,13 @@ const Button = ({
   isLeft,
   style,
 }) => {
-  const icon = (
+  const icon = Icon ? (
     <Icon
       style={{ color: color || COLORS.primary }}
       name={iconName}
       size={38}
     />
-  );
+  ) : null;
   const content = (
     <>
       {isLeft && icon}

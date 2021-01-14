@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     fontStyle: 'italic',
-
     color: clr,
   }),
   main: {

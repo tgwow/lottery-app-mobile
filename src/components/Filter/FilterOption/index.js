@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
-import Ionicons from 'react-native-vector-icons/FontAwesome';
+import { FontAwesome } from '@expo/vector-icons';
 import { COLORS } from '../../../styles/colors';
 
 const styles = StyleSheet.create({
@@ -32,7 +32,7 @@ const FilterOption = ({ name, color, active }) => {
     <TouchableOpacity style={styles.touchable(color, active)}>
       {active && (
         <View style={styles.toggleFilter()}>
-          <Ionicons name="close" color="white" />
+          <FontAwesome name="close" color="white" />
         </View>
       )}
       <Text style={styles.text(color, active)}>{name}</Text>

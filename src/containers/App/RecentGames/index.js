@@ -7,10 +7,10 @@ import Filter from '../../../components/Filter';
 import BetSummary from '../../../components/Bet/BetSummary';
 import { COLORS } from '../../../styles/colors';
 
-const RecentGames = () => {
+const RecentGames = ({ open }) => {
   return (
     <>
-      <Header />
+      <Header open={open} />
       <Container>
         <SecondaryHeading>Recent Games</SecondaryHeading>
         <Text>Filters</Text>
