@@ -1,6 +1,9 @@
 import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import { View, Text, StyleSheet } from 'react-native';
+import { format, parseISO } from 'date-fns';
 import { COLORS } from '../../../styles/colors';
+import { formatMoney } from '../../../utils/currency';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -34,20 +37,43 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 8,
   },
+  trash: {
+    position: 'absolute',
+    top: '50%',
+    transform: [{ translateY: -10 }],
+    right: 5,
+  },
 });
-const BetSummary = ({ color, name }) => {
+const BetSummary = ({
+  id,
+  name,
+  numbers,
+  color,
+  date,
+  price,
+  cart,
+  remove,
+}) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.verticalBar(color)} />
       <View style={styles.main}>
-        <Text style={styles.numbers}>
-          01, 02, 03, 04, 05, 07, 09, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25
-        </Text>
+        <Text style={styles.numbers}>{numbers}</Text>
         <Text style={styles.info}>
-          <Text>30/11/2020</Text>
+          <Text>{format(new Date(date), 'yyyy/MM/dd')}</Text>
           <Text> - </Text>
-          <Text>(R$ 2,50)</Text>
+          <Text>{formatMoney(price)}</Text>
         </Text>
+        {cart && (
+          <View style={styles.trash}>
+            <Ionicons
+              name="trash-outline"
+              size={20}
+              color={COLORS.secondary}
+              onPress={() => remove(id, price)}
+            />
+          </View>
+        )}
         <Text style={styles.name(color)}>{name}</Text>
       </View>
     </View>

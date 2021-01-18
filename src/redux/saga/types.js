@@ -1,20 +1,18 @@
 import { put } from 'redux-saga/effects';
-import { Creators as betsCreators } from '../ducks/bets';
+import { Creators as typesCreators } from '../ducks/types';
 import api from '../../services/api';
 
-export function* fetchBetsSaga() {
-  yield put(betsCreators.onLoading());
+export function* fetchTypesSaga() {
+  yield put(typesCreators.onLoading());
   try {
-    const response = yield api.get('/bets', {
+    const response = yield api.get('/types', {
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    console.log(JSON.stringify(response.data, null, 2));
-    yield put(betsCreators.onFetchSuccess(response.data));
-    alert('Your bets have been fetched saved!');
+    yield put(typesCreators.onFetchSuccess(response.data));
   } catch (e) {
-    console.log('[fetchBets[get-ERROR]]', e.response.data);
-    yield put(betsCreators.onError(e));
+    console.log('[fetchTypes[get-ERROR]]', e.response.data);
+    yield put(typesCreators.onError(e));
   }
 }

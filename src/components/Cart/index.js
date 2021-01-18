@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector, connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import CartHeader from './CartHeader';
 import CartBody from './CartBody';
 import CartFooter from './CartFooter';
+import { Creators as cartCreators } from '../../redux/ducks/cart';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,16 +15,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-const Cart = ({ close }) => {
+const Cart = React.memo(({ close, removeFromCart, saveBets }) => {
+  const { bets, totalPrice } = useSelector((state) => state.cartReducer);
   return (
     <>
       <View style={styles.container}>
         <CartHeader onClose={close} />
-        <CartBody totalPrice={7.5} />
+        <CartBody bets={bets} remove={removeFromCart} totalPrice={totalPrice} />
       </View>
-      <CartFooter />
+      <CartFooter save={saveBets} bets={bets} />
     </>
   );
-};
+});
 
-export default Cart;
+export default connect(null, { ...cartCreators })(Cart);

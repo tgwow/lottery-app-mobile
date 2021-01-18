@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { COLORS } from '../../../styles/colors';
 
 const styles = StyleSheet.create({
@@ -46,7 +46,7 @@ const Button = ({
       {!isLeft && icon}
     </>
   );
-  return <View style={styles.wrapper}>{content}</View>;
+  return <TouchableOpacity style={styles.wrapper}>{content}</TouchableOpacity>;
 };
 
 export default Button;

@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const ControlOption = ({ name, isCart }) => {
+const ControlOption = ({ name, isCart, onPress }) => {
   return (
-    <TouchableOpacity style={styles.touchable(isCart)}>
+    <TouchableOpacity style={styles.touchable(isCart)} onPress={onPress}>
       {isCart ? (
         <View style={styles.iconWrapper}>
           <Ionicons name="ios-cart-outline" color="white" size={25} />

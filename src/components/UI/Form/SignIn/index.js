@@ -47,7 +47,7 @@ const SignInForm = ({ navigation }) => {
   return (
     <>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: 'admin@admin.com', password: 'admin12' }}
         validationSchema={Yup.object(signInValidation)}
         onSubmit={(values, { setSubmitting }) => {
           signIn(values);

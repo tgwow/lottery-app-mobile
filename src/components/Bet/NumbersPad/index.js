@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import Number from './Number';
 
 const styles = StyleSheet.create({
@@ -7,12 +7,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    paddingBottom: 70,
+    paddingBottom: 50,
   },
 });
-const NumbersPad = ({ range, color, style }) => {
+const NumbersPad = ({ onPress, selectedNums, range, color, style }) => {
   const numbers = [...Array(range)].map((_, index) => (
-    <Number color={color}>{index + 1}</Number>
+    // eslint-disable-next-line react/no-array-index-key
+    <Number
+      /* eslint-disable-next-line react/no-array-index-key */
+      key={index}
+      color={color}
+      onPress={onPress}
+      active={selectedNums.includes(index + 1)}
+    >
+      {index + 1}
+    </Number>
   ));
   return (
     <ScrollView contentContainerStyle={[styles.container, style]}>

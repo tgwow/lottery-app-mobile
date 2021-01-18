@@ -38,7 +38,7 @@ export const doSign = async (dispatch, userData, url, type) => {
     await storeData(dataToStore);
 
     dispatch({ type: 'SIGNIN', token });
-    checkoutExpiration(50000, dispatch, token);
+    checkoutExpiration(+expiresIn, dispatch, token);
     if (type) alert('Your account was successfully created!');
   } catch (e) {
     console.log(`[${type || 'doSign'}[api.post(${url})]]`, e);

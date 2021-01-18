@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const BetControl = ({ style }) => {
+const BetControl = ({ style, completeGame, clearGame, addToCart }) => {
   return (
     <View style={[styles.wrapper, style]}>
-      <ControlOption name="Complete game" />
-      <ControlOption name="Clear game" />
-      <ControlOption name="Add to cart" isCart />
+      <ControlOption name="Complete game" onPress={completeGame} />
+      <ControlOption name="Clear game" onPress={clearGame} />
+      <ControlOption name="Add to cart" isCart onPress={addToCart} />
     </View>
   );
 };

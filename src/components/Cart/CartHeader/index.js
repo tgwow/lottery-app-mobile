@@ -20,7 +20,7 @@ const CartHeader = ({ onClose }) => {
     <>
       <View style={styles.close}>
         <Ionicons
-          onPress={() => onClose()}
+          onPress={onClose}
           name="md-close"
           size={35}
           color={COLORS.primary}

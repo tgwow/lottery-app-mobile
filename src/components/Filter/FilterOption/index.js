@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: active ? clr : 'transparent',
     padding: 5,
     alignItems: 'center',
-    width: 110,
+    width: 115,
   }),
   text: (clr, active) => ({
     color: active ? COLORS.white : clr,
@@ -22,14 +22,17 @@ const styles = StyleSheet.create({
   }),
   toggleFilter: (active) => ({
     position: 'absolute',
-    top: 0,
-    right: 6,
+    top: 1,
+    right: 7,
   }),
 });
 
-const FilterOption = ({ name, color, active }) => {
+const FilterOption = ({ name, color, active, onPress }) => {
   return (
-    <TouchableOpacity style={styles.touchable(color, active)}>
+    <TouchableOpacity
+      style={styles.touchable(color, active)}
+      onPress={() => onPress(name)}
+    >
       {active && (
         <View style={styles.toggleFilter()}>
           <FontAwesome name="close" color="white" />

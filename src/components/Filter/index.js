@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { useSelector, connect } from 'react-redux';
 import FilterOption from './FilterOption';
-import { COLORS } from '../../styles/colors';
+import { Creators as filterCreators } from '../../redux/ducks/filter';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -10,14 +11,29 @@ const styles = StyleSheet.create({
   },
 });
 
-const Filter = (props) => {
-  return (
-    <View style={styles.wrapper}>
-      <FilterOption name="Lotofácil" color={COLORS.lotofacil} active />
-      <FilterOption name="Mega-Sena" color={COLORS.mega_sena} />
-      <FilterOption name="Lotomania" color={COLORS.lotomania} active />
-    </View>
-  );
-};
+const Filter = ({ addType, removeType, clearType, behavior }) => {
+  const { types } = useSelector((state) => state.typesReducer);
+  const { selectedType } = useSelector((state) => state.filterReducer);
 
-export default Filter;
+  const handleOptionsPressed = (optionType) => {
+    if (behavior === 'single') {
+      if (selectedType.includes(optionType)) return;
+      clearType({ optionType });
+    } else if (selectedType.includes(optionType)) removeType({ optionType });
+    else addType({ optionType });
+  };
+  let options;
+  if (types.length > 0) {
+    options = types.map((type) => (
+      <FilterOption
+        key={type.id}
+        name={type.name}
+        color={type.color}
+        active={selectedType.includes(type.name)}
+        onPress={handleOptionsPressed}
+      />
+    ));
+  }
+  return <View style={styles.wrapper}>{options}</View>;
+};
+export default connect(null, { ...filterCreators })(Filter);

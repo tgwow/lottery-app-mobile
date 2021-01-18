@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   },
   isFocused: {
     fontWeight: 'bold',
+    color: COLORS.secondary,
   },
   separator: (isFocused) => ({
     position: 'absolute',

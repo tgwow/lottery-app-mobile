@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { View, Text } from 'react-native';
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import { COLORS } from '../../styles/colors';
@@ -10,12 +10,18 @@ const DefaultC = () => (
   </View>
 );
 
-const Drawer = ({ Screen }) => {
+const Drawer = React.memo(({ Screen, navigation, route }) => {
   const drawerRef = useRef(null);
-  const Component = Screen || DefaultC;
+  const Component = Screen || route?.params?.Screen || DefaultC;
+  const memoizedClose = useCallback(() => drawerRef.current.closeDrawer(), [
+    drawerRef,
+  ]);
+  const memoizedOpen = useCallback(() => drawerRef.current.openDrawer(), [
+    drawerRef,
+  ]);
 
   const renderDrawer = () => {
-    return <Cart close={() => drawerRef.current.closeDrawer()} />;
+    return <Cart close={memoizedClose} />;
   };
   return (
     <View style={{ flex: 1 }}>
@@ -27,10 +33,10 @@ const Drawer = ({ Screen }) => {
         drawerBackgroundColor={COLORS.white}
         renderNavigationView={renderDrawer}
       >
-        <Component open={() => drawerRef.current.openDrawer()} />
+        <Component open={memoizedOpen} navigation={navigation} />
       </DrawerLayout>
     </View>
   );
-};
+});
 
 export default Drawer;

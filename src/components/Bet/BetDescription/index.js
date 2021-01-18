@@ -17,17 +17,37 @@ const BetDescription = ({ description, style }) => {
   return (
     <MyText style={[styles.wrapper, style]}>
       <Text style={styles.title}>Fill your bet{'\n'}</Text>
-      <Text>
-        Mark as <Bold>many numbers</Bold> as you want up to a
-        <Bold> maximum of 50.{'\n'}</Bold>
-      </Text>
-      <Text>
-        Win by hitting <Bold>15, 16, 17, 18, 19, 20 </Bold>
-        or<Bold> none </Bold>
-        of the<Bold> 20 numbers drawn</Bold>
-      </Text>
+      <Text>{description.description}</Text>
     </MyText>
   );
 };
 
 export default BetDescription;
+
+{
+  /* <Text> */
+}
+{
+  /*  Mark as <Bold>many numbers</Bold> as you want up to a */
+}
+{
+  /*  <Bold> maximum of 50.{'\n'}</Bold> */
+}
+{
+  /* </Text> */
+}
+{
+  /* <Text> */
+}
+{
+  /*  Win by hitting <Bold>15, 16, 17, 18, 19, 20 </Bold> */
+}
+{
+  /*  or<Bold> none </Bold> */
+}
+{
+  /*  of the<Bold> 20 numbers drawn</Bold> */
+}
+{
+  /* </Text> */
+}

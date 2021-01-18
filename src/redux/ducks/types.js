@@ -1,22 +1,21 @@
 export const Types = {
-  FETCH_BETS: 'bets/FETCH_BETS',
-  FETCH_BETS_SUCCESS: 'bets/FETCH_BETS_SUCCESS',
-  LOADING: 'bets/LOADING',
-  ERROR: 'bets/ERROR',
-  SAVE_BETS: 'bets/SAVE_BETS',
+  FETCH_TYPES: 'types/FETCH_TYPES',
+  FETCH_TYPES_SUCCESS: 'types/FETCH_TYPES_SUCCESS',
+  LOADING: 'types/LOADING',
+  ERROR: 'types/ERROR',
 };
 
 const INITIAL_STATE = {
-  bets: [],
+  types: [],
   error: '',
   isLoading: false,
 };
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case Types.SAVE_BETS:
+    case Types.FETCH_TYPES_SUCCESS:
       return {
         ...state,
-        bets: state.bets.concat(action.bets),
+        types: action.payload.types,
         error: '',
         isLoading: false,
       };
@@ -32,42 +31,26 @@ const reducer = (state = INITIAL_STATE, action) => {
         error: action.error,
         isLoading: false,
       };
-    case Types.FETCH_BETS_SUCCESS:
-      return {
-        ...state,
-        bets: action.payload.bets,
-        error: '',
-        isLoading: false,
-      };
     default:
       return { ...state };
   }
 };
 
 export const Creators = {
-  fetchBets: () => {
-    console.log('[betCreator[fetchBets]] - ');
+  fetchTypes: () => {
+    console.log('[typeCreator[fetchTypes]] - ');
     return {
-      type: Types.FETCH_BETS,
-    };
-  },
-  saveBet: (bets) => {
-    console.log('[betCreator[saveBet]] - ', bets);
-    return {
-      type: Types.SAVE_BETS,
-      payload: {
-        bets,
-      },
+      type: Types.FETCH_TYPES,
     };
   },
   onLoading: () => {
-    console.log('[betCreator[onLoading]] - ');
+    console.log('[typeCreator[onLoading]] - ');
     return {
       type: Types.LOADING,
     };
   },
   onError: (error) => {
-    console.log('[betCreator[onError]] - ', error);
+    console.log('[typeCreator[onError]] - ', error);
     return {
       type: Types.ERROR,
       payload: {
@@ -75,12 +58,12 @@ export const Creators = {
       },
     };
   },
-  onFetchSuccess: (bets) => {
-    console.log('[betCreator[onFetchSuccess]] - ', bets);
+  onFetchSuccess: (types) => {
+    console.log('[typeCreator[onFetchSuccess]] - ');
     return {
-      type: Types.FETCH_BETS_SUCCESS,
+      type: Types.FETCH_TYPES_SUCCESS,
       payload: {
-        bets,
+        types,
       },
     };
   },

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import RecentGames from '../../containers/App/RecentGames';
 import NewBet from '../../containers/App/NewBet';
@@ -8,7 +7,7 @@ import TabBar from '../../components/Layout/TabBar';
 
 const TabStack = createBottomTabNavigator();
 
-export default () => (
+export default ({ navigation }) => (
   <TabStack.Navigator
     headerMode={false}
     tabBar={(props) => <TabBar {...props} />}
@@ -16,11 +15,12 @@ export default () => (
     <TabStack.Screen name="Home">
       {() => <Drawer Screen={RecentGames} />}
     </TabStack.Screen>
-    <TabStack.Screen name="NewBet" options={{ tabBarLabel: 'Bet' }}>
-      {() => <Drawer Screen={NewBet} />}
-    </TabStack.Screen>
-    <TabStack.Screen name="Profile">
-      {() => <Drawer Screesn={() => <Text>Nothing here yet!</Text>} />}
-    </TabStack.Screen>
+    <TabStack.Screen
+      name="NewBet"
+      options={{ tabBarLabel: 'Bet' }}
+      initialParams={{ Screen: NewBet, navigation }}
+      component={Drawer}
+    />
+    <TabStack.Screen name="Profile">{() => <Drawer />}</TabStack.Screen>
   </TabStack.Navigator>
 );
