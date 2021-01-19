@@ -21,7 +21,7 @@ const Drawer = React.memo(({ Screen, navigation, route }) => {
   ]);
 
   const renderDrawer = () => {
-    return <Cart close={memoizedClose} />;
+    return <Cart close={memoizedClose} navigation={navigation} />;
   };
   return (
     <View style={{ flex: 1 }}>

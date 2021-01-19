@@ -23,7 +23,7 @@ export const checkoutExpiration = (expiresIn, dispatch, token) => {
   api.defaults.headers.Authorization = `Bearer ${token}`;
 };
 
-export const doSign = async (dispatch, userData, url, type) => {
+export const doSign = async (dispatch, userData, url, type, alert) => {
   dispatch({ type: 'LOADING' });
   try {
     const {
@@ -39,27 +39,37 @@ export const doSign = async (dispatch, userData, url, type) => {
 
     dispatch({ type: 'SIGNIN', token });
     checkoutExpiration(+expiresIn, dispatch, token);
-    if (type) alert('Your account was successfully created!');
+    if (type)
+      alert('Congratulations', 'Your account was successfully created!');
   } catch (e) {
     console.log(`[${type || 'doSign'}[api.post(${url})]]`, e);
     const error = catchError(e);
     dispatch({ type: 'ERROR', error });
-    alert(error);
+    alert('Ops', error);
   }
 };
 
-export const doRecoveryPassword = async (dispatch, data, url, navigation) => {
+export const doRecoveryPassword = async (
+  dispatch,
+  data,
+  url,
+  navigation,
+  alert
+) => {
   dispatch({ type: 'LOADING' });
   data.redirect_url = 'http://localhost:3000/new-password';
   try {
     await api.post(url, data);
     dispatch({ type: 'RECOVERY_PASSWORD' });
-    alert('We sent you a recovery link. Please, check your inbox!');
+    alert(
+      'Almost there',
+      'We sent you a recovery link. Please, check your inbox!'
+    );
     navigation.push('SignIn');
   } catch (e) {
     console.log(`[doRecoveryPassword'}[api.post(${url})]]`, e);
     const error = catchError(e);
     dispatch({ type: 'ERROR', error });
-    alert(error);
+    alert('Ops', error);
   }
 };

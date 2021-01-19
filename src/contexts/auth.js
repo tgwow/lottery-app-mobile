@@ -6,6 +6,7 @@ import {
   doSign,
   doSignOut,
 } from '../utils/http';
+import useAlert from '../hooks/useAlert';
 
 export const AuthContext = createContext();
 
@@ -59,6 +60,7 @@ const authReducer = (state, action) => {
 
 const AuthProvider = ({ children }) => {
   const [auth, dispatch] = useReducer(authReducer, intialAuthState);
+  const alert = useAlert();
 
   useEffect(() => {
     async function bootstrapAsync() {
@@ -87,13 +89,19 @@ const AuthProvider = ({ children }) => {
         await doSign(dispatch, data, '/users', 'signUp');
       },
       signIn: async (data) => {
-        await doSign(dispatch, data, '/sessions');
+        await doSign(dispatch, data, '/sessions', null, alert);
       },
       signOut: () => {
         doSignOut(dispatch);
       },
       recoveryPassword: (data, navigation) => {
-        doRecoveryPassword(dispatch, data, '/forgot_password', navigation);
+        doRecoveryPassword(
+          dispatch,
+          data,
+          '/forgot_password',
+          navigation,
+          alert
+        );
       },
       ...auth,
     }),

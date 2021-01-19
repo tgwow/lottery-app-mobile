@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-const Cart = React.memo(({ close, removeFromCart, saveBets }) => {
+const Cart = React.memo(({ close, removeFromCart, saveBets, navigation }) => {
   const { bets, totalPrice } = useSelector((state) => state.cartReducer);
   return (
     <>
@@ -23,7 +23,12 @@ const Cart = React.memo(({ close, removeFromCart, saveBets }) => {
         <CartHeader onClose={close} />
         <CartBody bets={bets} remove={removeFromCart} totalPrice={totalPrice} />
       </View>
-      <CartFooter save={saveBets} bets={bets} />
+      <CartFooter
+        save={saveBets}
+        bets={bets}
+        onClose={close}
+        navigation={navigation}
+      />
     </>
   );
 });

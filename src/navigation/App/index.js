@@ -12,9 +12,14 @@ export default ({ navigation }) => (
     headerMode={false}
     tabBar={(props) => <TabBar {...props} />}
   >
-    <TabStack.Screen name="Home">
-      {() => <Drawer Screen={RecentGames} />}
-    </TabStack.Screen>
+    <TabStack.Screen
+      name="Home"
+      component={Drawer}
+      initialParams={{
+        Screen: RecentGames,
+        navigation,
+      }}
+    />
     <TabStack.Screen
       name="NewBet"
       options={{ tabBarLabel: 'Bet' }}

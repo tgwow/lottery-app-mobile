@@ -6,6 +6,7 @@ import { Roboto_700Bold_Italic, useFonts } from '@expo-google-fonts/roboto';
 import { NavigationContainer } from '@react-navigation/native';
 import RootStackScreen from './src/navigation';
 import AuthProvider from './src/contexts/auth';
+import AlertProvider from './src/contexts/alert';
 import Spinner from './src/components/UI/Spinner';
 import store from './src/redux';
 
@@ -23,12 +24,14 @@ export default function App() {
   if (!loaded) return <Spinner />;
   return (
     <Provider store={store}>
-      <AuthProvider>
-        <NavigationContainer style={styles.container}>
-          <StatusBar />
-          <RootStackScreen />
-        </NavigationContainer>
-      </AuthProvider>
+      <AlertProvider>
+        <AuthProvider>
+          <NavigationContainer style={styles.container}>
+            <StatusBar />
+            <RootStackScreen />
+          </NavigationContainer>
+        </AuthProvider>
+      </AlertProvider>
     </Provider>
   );
 }

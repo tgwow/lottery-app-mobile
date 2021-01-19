@@ -31,6 +31,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         bets: [],
+        totalPrice: 0,
         error: '',
         isLoading: false,
       };
@@ -72,12 +73,13 @@ export const Creators = {
       },
     };
   },
-  saveBets: (bets) => {
+  saveBets: (bets, alert) => {
     console.log('[cartCreator[saveBets]] - ', bets);
     return {
       type: Types.SAVE,
       payload: {
         bets,
+        alert,
       },
     };
   },

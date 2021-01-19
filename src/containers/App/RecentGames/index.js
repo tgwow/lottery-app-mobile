@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Button } from 'react-native';
 import { connect, useSelector } from 'react-redux';
 import Header from '../../../components/Layout/Header';
 import SecondaryHeading from '../../../components/UI/Heading/Secondary';
@@ -10,6 +10,7 @@ import Spinner from '../../../components/UI/Spinner';
 import Filter from '../../../components/Filter';
 import { Creators as betsActions } from '../../../redux/ducks/bets';
 import { Creators as typesActions } from '../../../redux/ducks/types';
+import useAlert from '../../../hooks/useAlert';
 
 const subTitle = {
   marginBottom: 13,
@@ -20,14 +21,20 @@ const paragraph = {
   fontSize: 17,
 };
 
-const RecentGames = ({ open, fetchBets, fetchTypes }) => {
+const RecentGames = ({ open, fetchBets, fetchTypes, navigation }) => {
   const { error, bets } = useSelector((state) => state.betsReducer);
   const { selectedType } = useSelector((state) => state.filterReducer);
 
   useEffect(() => {
+    navigation.addListener('focus', () => {
+      console.log(1);
+      fetchBets();
+    });
+  }, [navigation, fetchBets]);
+
+  useEffect(() => {
     fetchTypes();
-    fetchBets();
-  }, [fetchBets, fetchTypes]);
+  }, [fetchTypes]);
 
   let content = <Spinner />;
   if (bets.length > 0) {

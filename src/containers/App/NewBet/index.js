@@ -15,6 +15,7 @@ import Filter from '../../../components/Filter';
 import { COLORS } from '../../../styles/colors';
 import { Creators as cartCreators } from '../../../redux/ducks/cart';
 import { Creators as filterCreators } from '../../../redux/ducks/filter';
+import useAlert from '../../../hooks/useAlert';
 
 const styles = {
   marginBottom: 13,
@@ -24,7 +25,7 @@ const NewBet = React.memo(({ open, addToCart, clearType, navigation }) => {
   const { types } = useSelector((state) => state.typesReducer);
   const { selectedType } = useSelector((state) => state.filterReducer);
   const [betType, setBetType] = useState(null);
-
+  const alert = useAlert();
   useEffect(() => {
     const cleanup = navigation.addListener('focus', () => {
       clearType({ optionType: 'Lotofácil' });
@@ -57,9 +58,11 @@ const NewBet = React.memo(({ open, addToCart, clearType, navigation }) => {
   const handleClearGame = () => {
     setSelectedNums([]);
   };
-
   const handleAddToCart = () => {
-    if (selectedNums.length < 1) alert('Select one number at least.');
+    if (selectedNums.length < 1) {
+      alert('Hey', 'Select one number at least.');
+      return;
+    }
     const bet = {
       id: Date.now() + betType.id,
       numbers: selectedNums.sort((a, b) => a - b).toString(),
@@ -71,6 +74,7 @@ const NewBet = React.memo(({ open, addToCart, clearType, navigation }) => {
     };
     addToCart(bet, bet.price);
     handleClearGame();
+    open();
   };
   const removeValueFromArray = (arr, value) => {
     return arr.filter((item) => item !== value);
@@ -89,7 +93,7 @@ const NewBet = React.memo(({ open, addToCart, clearType, navigation }) => {
     } else if (numberIndex) {
       setSelectedNums(removeValueFromArray(updatedNumbers, e));
     } else {
-      alert(`You can select ${betType['max_number']} numbers.`);
+      alert('Hey', `You can select ${betType['max_number']} numbers.`);
     }
   };
 
