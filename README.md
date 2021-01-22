@@ -42,8 +42,8 @@ Foi utilizado o framework [React-Native](https://reactnative.dev/) junto com [ex
 
 ## 🎨 Layout
 
-<p style="text-align: center"> 
-  <img src="./assets/lottery-mobile-GIF.gif" width="720" height="480" alt="Video mostrando a aplição"/>
+<p align="center"> 
+  <img src="./assets/lottery-mobile-GIF.gif" width="480" height="720" alt="Video mostrando a aplição"/>
 </p>
 
 ## 🚀 Como executar o projeto
