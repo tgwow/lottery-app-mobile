@@ -27,7 +27,6 @@ Esta é a versão mobile do projeto The Greatest Lottery App, a ideia é simular
 Projeto desenvolvido durante o **Lab Luby** na [Luby Software](https://www.luby.com.br/) durante meu período de treinamento.
 Foi utilizado o framework [React-Native](https://reactnative.dev/) junto com [expo](https://docs.expo.io/) já que eles permitem a criação de apps nativos utilizando somente Javascript com uma só base de códigos.
 
----
 
 ## ⚙️ Funcionalidades
 
@@ -37,8 +36,6 @@ Foi utilizado o framework [React-Native](https://reactnative.dev/) junto com [ex
 - [x] Salvar múltiplas apostas no banco de dados
 - [x] Filtrar suas apostas feitas
 - [x] Carregar os tipos de aposta
-
----
 
 
 ## 🎨 Layout
@@ -70,7 +67,6 @@ $ expo start -c
 ```
 Depois disso, voce pode rodar no emulador [android](https://docs.expo.io/workflow/android-studio-emulator/)/[iOS](https://docs.expo.io/workflow/ios-simulator/) ou no seu [próprio dispositivo](https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet) 
 
----
 
 ## 🛠 Tecnologias
 
@@ -87,7 +83,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Yup](https://github.com/jquense/yup)**
 -   **[Expo Font](https://docs.expo.io/versions/latest/sdk/font/)**
 
----
 
 ## 💪 Como contribuir para o projeto
 
@@ -97,7 +92,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 4. Envie as suas alterações: `git push origin my-feature`
 > Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](./CONTRIBUTING.md)
 
----
 
 ## 🦸 Autor
 
@@ -109,12 +103,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 [![Twitter Badge](https://img.shields.io/badge/-@theveloper_tg-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/theveloper_tg)](https://twitter.com/theveloper_tg) [![Linkedin Badge](https://img.shields.io/badge/-Thiago-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/thiago-oliveira-86758738/)](https://www.linkedin.com/in/thiago-oliveira-86758738/) 
 
----
 
 ## 📝 Licença
 
 Este projeto esta sobe a licença [MIT](./LICENSE).
 
 Feito com ❤️ por Thiago Oliveira 👋🏽 [Entre em contato!](https://www.linkedin.com/in/thiago-oliveira-86758738/)
-
----
