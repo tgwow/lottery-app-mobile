@@ -60,7 +60,8 @@ $ npm install --global expo-cli
 # Inicie o app
 $ expo start -c
 ```
-Depois disso, voce pode rodar no emulador [android](https://docs.expo.io/workflow/android-studio-emulator/)/[iOS](https://docs.expo.io/workflow/ios-simulator/) ou no seu [próprio dispositivo](https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet)
+Depois disso, voce pode rodar no emulador [android](https://docs.expo.io/workflow/android-studio-emulator/)/[iOS](https://docs.expo.io/workflow/ios-simulator/) ou no seu [próprio dispositivo](https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet) 
+
 ---
 
 ## 🛠 Tecnologias
