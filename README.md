@@ -48,7 +48,7 @@ Foi utilizado o framework [React-Native](https://reactnative.dev/) junto com [ex
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) or [nvm](https://nodejs.org/en/download/package-manager/#nvm) this is a package manager to install/remove/switch differents versions of Node.js.
 
-#### 🎲 Rodando o Frontend (web)
+#### 🎲 Rodando o aplicativo (mobile)
 
 ```bash
 # Clone esse repositorio
@@ -57,11 +57,10 @@ $ cd lottery-app
 $ npm install
 # Precisamos instalar a CLI do expo (https://docs.expo.io/get-started/installation/)
 $ npm install --global expo-cli
-# Depois disso, voce pode rodar no emulador [android](https://docs.expo.io/workflow/android-studio-emulator/)/[iOS](https://docs.expo.io/workflow/ios-simulator/) ou no seu [próprio dispositivo](https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet)
-$ Inicie o app
+# Inicie o app
 $ expo start -c
 ```
-
+Depois disso, voce pode rodar no emulador [android](https://docs.expo.io/workflow/android-studio-emulator/)/[iOS](https://docs.expo.io/workflow/ios-simulator/) ou no seu [próprio dispositivo](https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet)
 ---
 
 ## 🛠 Tecnologias
@@ -69,7 +68,7 @@ $ expo start -c
 As seguintes ferramentas foram usadas na construção do projeto:
 
 
-#### [](https://github.com/tgwow/lottery-api)**Frontend**  [React-Native](https://reactnative.dev/)
+#### [](https://github.com/tgwow/lottery-api)**Mobile**  [React-Native](https://reactnative.dev/)
 
 -   **[Expo](https://docs.expo.io/)**
 -   **[Redux](https://redux.js.org/)**
