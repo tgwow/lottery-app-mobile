@@ -39,6 +39,13 @@ Foi utilizado o framework [React-Native](https://reactnative.dev/) junto com [ex
 
 ---
 
+
+## 🎨 Layout
+
+<p align="center">
+  ![Video mostrando a aplição](./assets/lottery-mobile-GIF.gif)
+</p>
+
 ## 🚀 Como executar o projeto
 
 💡Execute primeiro o **[Backend](https://github.com/tgwow/lottery-api)** e depois execute este projeto.
