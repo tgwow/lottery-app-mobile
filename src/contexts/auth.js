@@ -86,7 +86,7 @@ const AuthProvider = ({ children }) => {
   const authContext = useMemo(
     () => ({
       signUp: async (data) => {
-        await doSign(dispatch, data, '/users', 'signUp');
+        await doSign(dispatch, data, '/users', 'signUp', alert);
       },
       signIn: async (data) => {
         await doSign(dispatch, data, '/sessions', null, alert);

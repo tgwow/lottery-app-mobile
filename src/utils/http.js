@@ -3,6 +3,7 @@ import { storeData, clearData } from './localStorage';
 
 function catchError(err) {
   // TODO: If server is offline, this data will isn't catch in catch statement
+  console.log(err)
   if (err.message === 'Network Error')
     return 'Error: 500 - Something is wrong with our server, please, contact us! ';
   return Array.isArray(err.response.data)

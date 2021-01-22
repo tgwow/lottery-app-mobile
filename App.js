@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+console.disableYellowBox = true;
 
 export default function App() {
   const [loaded] = useFonts({ Roboto_700Bold_Italic });

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
   },
 });
-const CartFooter = ({ save, bets, onClose, navigation }) => {
+const CartFooter = ({ save, bets, onClose }) => {
   const alert = useAlert();
   const { isLoading } = useSelector((state) => state.cartReducer);
   const handleSaveBets = () => {
@@ -23,7 +23,6 @@ const CartFooter = ({ save, bets, onClose, navigation }) => {
     }));
     save(betsArr, alert);
     onClose();
-    navigation.navigate('Home');
   };
   return (
     <View style={styles.saveBackground}>
