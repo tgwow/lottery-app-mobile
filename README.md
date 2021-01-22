@@ -9,17 +9,18 @@
 </h4>
 
 <p align="center">
- <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-sobre">Sobre</a> •
  <a href="#-funcionalidades">Funcionalidades</a> •
  <a href="#-layout">Layout</a> •
- <a href="#-como-executar-o-projeto">Como executar</a> • 
- <a href="#-tecnologias">Tecnologias</a> • 
- <a href="#-autor">Autor</a> • 
- <a href="#user-content--licença">Licença</a>
+ <a href="#-instalação">Instalação</a> • 
+ <a href="#-tecnologias">Tecnologias</a> •
+ <a href="#-contribuindo">Contribuindo</a> • 
+ <a href="#-autor">Autor</a> •
+ <a href="#-licença">Licença</a>
 </p>
 
 
-## 💻 Sobre o projeto
+## 💻 Sobre
 
 Esta é a versão mobile do projeto The Greatest Lottery App, a ideia é simular um ambiente de apostas. Nota: Esta aplicação foi feita apenas para realização de estudos.
 
@@ -44,7 +45,7 @@ Foi utilizado o framework [React-Native](https://reactnative.dev/) junto com [ex
   <img src="./assets/lottery-mobile-GIF.gif" width="480" height="720" alt="Video mostrando a aplição"/>
 </p>
 
-## 🚀 Como executar o projeto
+## 🚀 Instalação
 
 💡Execute primeiro o **[Backend](https://github.com/tgwow/lottery-api)** e depois execute este projeto.
 
@@ -84,7 +85,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Expo Font](https://docs.expo.io/versions/latest/sdk/font/)**
 
 
-## 💪 Como contribuir para o projeto
+## 💪 Contribuindo
 
 1. Faça um **fork** do projeto.
 2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
